@@ -1,0 +1,73 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{%block titulo %}
+    Sucursales
+{%endblock titulo %}
+
+
+{%block estructura %}
+<h1 style="text-align:center;"> {{titulo}}</h1>
+
+<table>
+    <tr>
+        <td width="200"><h5>Agregar Sucursal:</h5></td>
+        <td>
+            <a
+            href="{% url 'create_sucursal' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa-solid fa-plus" title="Agregar"> </i>
+            </a>
+        </td>
+        <td width="200"><h5>Buscar Sucursal:</h5></td>
+        <td>
+            <a
+            href="{% url 'buscarSucursal' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa-solid fa-magnifying-glass" title="Buscar"> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Email</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for c in sucursales  %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.direccion }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.telefono }}</td>
+            <td>
+                <a
+                href="{% url 'update_sucursal' c.id  %}"
+                class="btn btn-primary"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-edit fa-sm" title="Editar"></i>
+                </a>
+                <a
+                href="{% url 'delete_sucursal' c.id  %}"
+                class="btn btn-danger"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-trash fa-sm" title="Eliminar"></i>
+                </a>
+            </td>  
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+{%endblock estructura %}
+
+{%block fondo %}
+{%endblock fondo %}

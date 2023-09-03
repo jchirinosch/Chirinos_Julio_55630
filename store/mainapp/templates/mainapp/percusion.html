@@ -1,0 +1,131 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{%block titulo %}
+    Percusión
+{%endblock titulo %}
+
+
+{%block estructura %}
+    <h1 style="text-align:center;"> {{titulo}}</h1>
+
+    <table>
+        <tr>
+            <td width="200"><h5>Agregar Producto:</h5></td>
+            <td>
+                <a
+                href="{% url 'create_percusion' %}"
+                class="btn btn-primary btn-sm"
+                ><i class="fa-solid fa-plus" title="Agregar"> </i>
+                </a>
+            </td>
+            <td width="200"><h5>Buscar Producto:</h5></td>
+            <td>
+                <a
+                href="{% url 'buscarPercusion' %}"
+                class="btn btn-primary btn-sm"
+                ><i class="fa-solid fa-magnifying-glass" title="Buscar"> </i>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Origen</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for c in percusion  %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.marca }}</td>
+                <td>{{ c.modelo }}</td>
+                <td>{{ c.origen }}</td>
+                <td>{{ c.precio }}</td>
+                <td>
+                    <a
+                    href="{% url 'update_percusion' c.id  %}"
+                    class="btn btn-primary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-edit fa-sm" title="Editar"></i>
+                    </a>
+                    <a
+                    href="{% url 'delete_percusion' c.id  %}"
+                    class="btn btn-danger"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-trash fa-sm" title="Eliminar"></i>
+                    </a>
+                </td>  
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+
+{%endblock estructura %}
+
+{%block fondo %}
+{%endblock fondo %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

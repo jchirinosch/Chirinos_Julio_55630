@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Music Store</title>
+        <!--<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />-->
+        <link rel="icon" type="image/x-icon" href='static/mainapp/assets/favicon.ico' />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Font Awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        
+        <link href="{% static 'mainapp/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container px-5">
+                <!--<a class="navbar-brand" href="#page-top">Music Store</a>-->
+                <a class="navbar-brand" href="{% url 'home' %}">Music Store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+
+                        {% if user.is_authenticated %}
+
+                        <a class="nav-link" href="{% url 'guitarras' %}">Guitarras</a>
+                        <a class="nav-link" href="{% url 'bajos' %}">Bajos</a>
+                        <a class="nav-link" href="{% url 'percusion' %}">Percusión</a>
+                        <a class="nav-link" href="{% url 'sucursales' %}">Sucursales</a>
+                        <a class="nav-link" href="{% url 'aboutme' %}">About Me</a>
+                        <a class="nav-link" href="{% url 'editar_perfil' %}">Perfil</a>S
+                        <p style="color:white"><strong>Bienvenido {{user.username}}</p>
+                        <div class="text-center">
+                            <img src="{{ request.session.avatar }}" height="40px" weight="40px"/>
+                        </div>
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                       
+                    {% else %}
+
+                        <a class="nav-link" href="{% url 'registro' %}">Registro</a>    
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                                            
+                    {% endif %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="masthead text-center text-white">
+            <div class="masthead-content">
+                <div class="container px-5">
+                    <h1 class="masthead-heading mb-0">MUSIC STORE</h1>
+                    <h2 class="masthead-subheading mb-0">INSTRUMENTOS MUSICALES Y AUDIO PROFESIONAL</h2>
+                    
+                    <h2>
+                    {% block titulo %}
+
+                    {% endblock titulo %}
+                    </h2>
+                </div>
+            </div>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        </header>
+        
+        {% block estructura %}
+            
+        {% endblock estructura %}
+
+        {% block fondo %}
+
+        <p><h2 class="display-4"><center>Contamos con los mejores productos y precios del mercado!</center></h2></p>
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src='static/mainapp/assets/img/01.jpg' alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Para todos los amantes de la música...!</h2>
+                            <p>Casa de música líder en instrumentos musicales y equipamiento de audio profesional. Disponemos de una amplia variedad de productos en nuestro catálogo, desde instrumentos de orquesta y estudio, hasta guitarras, baterías, pianos digitales, saxofones y ukeleles, además de equipos de grabación y microfonía líderes en el mercado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src='static/mainapp/assets/img/02.jpg' alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Que te podemos ofrecer en nuestra tienda?</h2>
+                            <p>Desde guitarras criollas para principiantes hasta micrófonos y amplificadores profesionales, la tienda de instrumentos musicales online Music Store dispone de una amplia gama de equipamiento musical. No importa si lo que buscas es un micrófono, un teclado musical, una batería electrónica o un bajo eléctrico, siempre te daremos asesoramiento en lo que necesites.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src='static/mainapp/assets/img/03.jpg' alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Distribuidor de las mejores marcas y diversos modelos...</h2>
+                            <p>Tenemos algunas de las marcas más populares en stock, tales como Fender, Roland, Casio, Marshall, Ibanez, Behringer y Shure, sin olvidar que somos distribuidores oficiales Yamaha para instrumentos musicales y audio en Argentina.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-black">
+            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Music Store 2023</p></div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static '/mainapp/js/scripts.js' %}"></script>
+        {% endblock fondo %}
+        
+    </body>
+</html>

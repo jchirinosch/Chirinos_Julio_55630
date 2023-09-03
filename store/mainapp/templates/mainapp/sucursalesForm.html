@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{%block titulo %}
+    Agregar Sucursal
+{%endblock titulo %}
+
+
+{%block estructura %}
+<h2>Ingrese los datos de la sucursal nueva:</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+
+{%endblock estructura %}
+
+{%block fondo %}
+{%endblock fondo %}
